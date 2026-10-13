@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Surat Untukmu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        .letter-content {
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.6;
+            min-height: 120px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4338ca;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="content" class="letter-content"></div>
+        <button id="nextBtn" onclick="nextStep()">Lanjut ➔</button>
+    </div>
+
+    <script>
+        // Ubah kalimat di bawah ini sesuai isi surat yang kamu inginkan
+        const steps = [
+            "Halo! Ada pesan khusus yang ingin aku sampaikan ke kamu...",
+            "Terima kasih ya sudah selalu ada dan mau mendengarkan.",
+            "Semoga harimu selalu menyenangkan dan penuh hal baik!",
+            "Tamat ❤️ Silakan tutup halaman ini ya."
+        ];
+
+        let currentIndex = 0;
+        const contentDiv = document.getElementById("content");
+        const nextBtn = document.getElementById("nextBtn");
+
+        function updateContent() {
+            contentDiv.innerHTML = steps[currentIndex];
+        }
+
+        function nextStep() {
+            currentIndex++;
+            if (currentIndex < steps.length) {
+                updateContent();
+            } else {
+                nextBtn.classList.add("hidden");
+            }
+        }
+
+        updateContent();
+    </script>
+
+</body>
+</html>
